@@ -1,4 +1,4 @@
 - Vite uses node version 20
-- React starts with: npm run dev
-- Frontend in browser opens with: http://localhost:5173/
-- Backend starts with: php -S localhost:8000 -t backend/public
+- React starts with (from /frontend): npm run dev
+- Frontend in browser opens with (from /frontend): http://localhost:5173/
+- Backend starts with (from the project root): php -S localhost:8000 -t backend/public
