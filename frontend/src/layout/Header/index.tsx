@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import walletIcon from '../../assets/img/blockchain-wallet.png'
+import walletIcon from '../../assets/img/bitcoin-wallet.svg'
 
 const Header = () => {
 	return (

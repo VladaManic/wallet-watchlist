@@ -7,12 +7,14 @@ import Page404 from '../../pages/Page404'
 
 const Main = () => {
 	return (
-		<Routes>
+		<div className="min-h-[700px]">
+			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/wallet/:walletId" element={<Single />} />
 				<Route path="/add" element={<Add />} />
 				<Route path="*" element={<Page404 />} />
-		</Routes>
+			</Routes>
+		</div>
 	)
 }
 
