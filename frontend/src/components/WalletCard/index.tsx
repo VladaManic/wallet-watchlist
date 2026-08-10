@@ -1,3 +1,7 @@
+import { NavLink } from 'react-router-dom'
+
+import arrowRight from '../../assets/img/arrow-right.svg'
+
 import type { WalletObj } from '../../types/interfaces'
 
 interface Props {
@@ -5,15 +9,20 @@ interface Props {
 }
 
 const WalletCard = ({ wallet }: Props) => {
-		const createdAt = new Date(wallet.created_at);
+    const param = wallet !== undefined && wallet.id
+	const createdAt = new Date(wallet.created_at);
 
     return (
-        <div className="flex justify-between">
-            <div>{wallet.id}</div>
-            <div>{wallet.name}</div>
-						<div>{wallet.address}</div>
-						<div>{createdAt.toLocaleDateString()}</div>
-        </div>
+        <NavLink
+            to={`/wallet/${param}`}>
+            <div className="flex justify-between items-center mb-7 py-[15px] px-[24px] border-2 border-solid border-border-orange rounded-[10px] bg-single-card">
+                <div>{wallet.id}</div>
+                <div>{wallet.name}</div>
+                <div>{wallet.address}</div>
+                <div>{createdAt.toLocaleDateString()}</div>
+                <div><img src={arrowRight} alt="Arrow right" className="w-[10px]" /></div>
+            </div>
+        </NavLink>
     );
 };
 

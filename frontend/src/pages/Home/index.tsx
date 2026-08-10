@@ -8,7 +8,7 @@ const Home = () => {
 	const walletsCtx = useContext(WalletsContext)
 
 	return (
-		<div>
+		<div className="pt-[50px]">
 			{walletsCtx.wallets.map((singleWallet: WalletObj) => (
 				<WalletCard key={singleWallet.id} wallet={singleWallet} />
 			))}

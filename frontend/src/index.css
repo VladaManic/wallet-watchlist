@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-    --color-header-bg: #f2f5f3;
-    --color-body-bg: #fff;
-    --color-footer-bg: #403f3d;
-    --color-text-default: #1a1918;
-}
-
 @font-face {
     font-family: 'Spartan Medium';
     src: url('./assets/fonts/SpartanMedium500.ttf');
@@ -15,6 +8,15 @@
 @font-face {
     font-family: 'Spartan Bold';
     src: url('./assets/fonts/SpartanBold700.ttf');
+}
+
+@theme {
+    --color-header-bg: #f2f5f3;
+    --color-body-bg: #fff;
+    --color-footer-bg: #403f3d;
+    --color-text-default: #1a1918;
+    --color-border-orange: #cf580e;
+    --color-single-card: #faf7f5;
 }
 
 a {
