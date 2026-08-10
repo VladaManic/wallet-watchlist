@@ -18,6 +18,7 @@ class WalletController
         $this->service = $service;
     }
 
+    //Get all wallets
     public function index()
     {
         header("Content-Type: application/json");
@@ -25,5 +26,23 @@ class WalletController
         echo json_encode(
             $this->service->getWallets()
         );
+    }
+
+    //Get single wallet
+    public function show(int $id): void
+    {
+        $wallet = $this->service->getWalletById($id);
+
+        if (!$wallet) {
+            http_response_code(404);
+
+            echo json_encode([
+                "message" => "Wallet not found"
+            ]);
+
+            return;
+        }
+
+        echo json_encode($wallet);
     }
 }

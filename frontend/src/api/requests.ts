@@ -10,3 +10,13 @@ export const getWalletsList = async (): Promise<WalletObj[]> => {
         throw error;
     }
 };
+
+export const getSingleWallet = async (id: number): Promise<WalletObj> => {
+    try {
+        const response = await api.get<WalletObj>(`/api/wallets/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to fetch single wallet:', error);
+        throw error;
+    }
+};

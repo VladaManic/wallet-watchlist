@@ -24,4 +24,9 @@ class WalletService
     {
         return $this->repository->findAll();
     }
+
+    public function getWalletById(int $id): ?array
+    {
+        return $this->repository->findById($id);
+    }
 }

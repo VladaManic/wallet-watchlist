@@ -29,9 +29,21 @@ class WalletRepository
             FROM wallets
             ORDER BY id DESC
         ";
-
         $statement = $this->db->query($sql);
-
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findById(int $id): ?array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT id, name, address
+            FROM wallets
+            WHERE id = :id"
+        );
+        $stmt->execute([
+            'id' => $id
+        ]);
+        $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $wallet ?: null;
     }
 }
