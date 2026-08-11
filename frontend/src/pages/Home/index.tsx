@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import WalletsContext from '../../context/WalletsContext'
 import type { WalletObj } from '../../types/interfaces'
 
-import WalletCard from '../../components/WalletCard'
+import WalletCard from '../../components/Home/WalletCard'
 
 const Home = () => {
 	const walletsCtx = useContext(WalletsContext)

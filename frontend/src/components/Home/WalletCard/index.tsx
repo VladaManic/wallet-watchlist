@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
 
-import arrowRight from '../../assets/img/arrow-right.svg'
+import arrowRight from '../../../assets/img/arrow-right.svg'
 
-import type { WalletObj } from '../../types/interfaces'
+import type { WalletObj } from '../../../types/interfaces'
 
 interface Props {
     wallet: WalletObj;

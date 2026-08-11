@@ -36,7 +36,7 @@ class WalletRepository
     public function findById(int $id): ?array
     {
         $stmt = $this->db->prepare(
-            "SELECT id, name, address
+            "SELECT id, name, address, created_at
             FROM wallets
             WHERE id = :id"
         );
