@@ -27,6 +27,15 @@ class WalletService
 
     public function getWalletById(int $id): ?array
     {
-        return $this->repository->findById($id);
+        $wallet = $this->repository->findById($id);
+
+        if (!$wallet) {
+            return null;
+        }
+
+        $wallet['assets'] = $this->repository->findAssetsByWalletId($id);
+        $wallet['activity'] = $this->repository->findActivityByWalletId($id);
+
+        return $wallet;
     }
 }

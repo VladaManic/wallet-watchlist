@@ -46,4 +46,43 @@ class WalletRepository
         $wallet = $stmt->fetch(PDO::FETCH_ASSOC);
         return $wallet ?: null;
     }
+
+    //Get assets for single wallet
+    public function findAssetsByWalletId(int $walletId): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT
+                symbol,
+                balance
+             FROM wallet_assets
+             WHERE wallet_id = :wallet_id
+             ORDER BY id"
+        );
+
+        $stmt->execute([
+            'wallet_id' => $walletId
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //Get activity for single wallet
+    public function findActivityByWalletId(int $walletId): array
+    {
+        $stmt = $this->db->prepare(
+            "SELECT
+                type,
+                amount,
+                date
+             FROM wallet_activity
+             WHERE wallet_id = :wallet_id
+             ORDER BY date DESC, id DESC"
+        );
+
+        $stmt->execute([
+            'wallet_id' => $walletId
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
