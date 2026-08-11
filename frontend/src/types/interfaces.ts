@@ -1,9 +1,11 @@
 export type AssetsObj = {
+    id: number,
     symbol: string,
     balance: number,
 }
 
 export type ActivityObj = {
+    id: number,
     type: string,
     amount: string,
     date: string
@@ -22,5 +24,5 @@ export type WalletsCtxProps = {
     wallets: WalletObj[]
     singleWallet:  WalletObj | null
     setWallets: (wallets: WalletObj[]) => void
-    setSingleWallet: (wallet: WalletObj) => void
+    setSingleWallet: (wallet: WalletObj | null) => void;
 }

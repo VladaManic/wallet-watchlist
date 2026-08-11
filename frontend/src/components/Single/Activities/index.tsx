@@ -13,7 +13,7 @@ const Activity = () => {
 		<div>
 			<p className="mb-3">Activity:</p>
 			{singleWallet?.activity.map((singleActivity: ActivityObj) => (
-				<ActivityItem key={singleWallet.id} singleActivity={singleActivity} />
+				<ActivityItem key={singleActivity.id} singleActivity={singleActivity} />
 			))}
 		</div>
 	)

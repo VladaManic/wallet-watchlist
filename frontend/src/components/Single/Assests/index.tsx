@@ -13,7 +13,7 @@ const Assets = () => {
 		<div className="mb-3">
 			<p className="mb-3">Assets:</p>
 			{singleWallet?.assets.map((singleAsset: AssetsObj) => (
-				<AssetItem key={singleWallet.id} singleAsset={singleAsset} />
+				<AssetItem key={singleAsset.id} singleAsset={singleAsset} />
 			))}
 		</div>
 	)

@@ -52,6 +52,7 @@ class WalletRepository
     {
         $stmt = $this->db->prepare(
             "SELECT
+                id,
                 symbol,
                 balance
              FROM wallet_assets
@@ -71,6 +72,7 @@ class WalletRepository
     {
         $stmt = $this->db->prepare(
             "SELECT
+                id,
                 type,
                 amount,
                 date

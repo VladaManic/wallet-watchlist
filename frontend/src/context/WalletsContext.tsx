@@ -7,7 +7,7 @@ const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
 	singleWallet: null,
 	setWallets: (wallets: WalletObj[]) => {null},
-	setSingleWallet: (wallet: WalletObj) => {null},
+	setSingleWallet: (wallet: WalletObj | null) => {},
 });
 
 export const WalletsContextProvider = ({
@@ -20,9 +20,9 @@ export const WalletsContextProvider = ({
 			setCurrentWallets(wallets)
 	}
 
-	const setSingleWalletHandler = (wallet: WalletObj) => {
-			setCurrentSingleWallet(wallet)
-	}
+	const setSingleWalletHandler = (wallet: WalletObj | null) => {
+    setCurrentSingleWallet(wallet);
+};
 
 	const context = {
 			wallets: currentWallets,
