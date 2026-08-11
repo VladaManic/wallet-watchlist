@@ -12,6 +12,7 @@ function App() {
 	useEffect(() => {
     getWalletsList().then((data) => {
         walletsCtx.setWallets(data);
+        //console.log(data);
     });
   }, []);
 

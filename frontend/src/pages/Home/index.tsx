@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import WalletsContext from '../../context/WalletsContext'
-import type { WalletObj } from '../../types/interfaces'
+import type { WalletListItem } from '../../types/interfaces'
 
 import WalletCard from '../../components/Home/WalletCard'
 
@@ -13,7 +13,7 @@ const Home = () => {
 
 	return (
 		<div className="pt-[50px]">
-			{walletsCtx.wallets.map((singleWallet: WalletObj) => (
+			{walletsCtx.wallets.map((singleWallet: WalletListItem) => (
 				<WalletCard key={singleWallet.id} wallet={singleWallet} />
 			))}
 		</div>

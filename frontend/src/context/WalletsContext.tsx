@@ -1,22 +1,22 @@
 import { createContext, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 
-import type {WalletObj, WalletsCtxProps} from '../types/interfaces'
+import type {WalletListItem, WalletObj, WalletsCtxProps} from '../types/interfaces'
 
 const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
 	singleWallet: null,
-	setWallets: (wallets: WalletObj[]) => {null},
+	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
 });
 
 export const WalletsContextProvider = ({
     children,
 }: PropsWithChildren<object>) => {
-	const [currentWallets, setCurrentWallets] = useState<WalletObj[]>([])
+	const [currentWallets, setCurrentWallets] = useState<WalletListItem[]>([])
 	const [currentSingleWallet, setCurrentSingleWallet] = useState<WalletObj | null>(null);
 
-	const setWalletsHandler = (wallets: WalletObj[]) => {
+	const setWalletsHandler = (wallets: WalletListItem[]) => {
 			setCurrentWallets(wallets)
 	}
 
