@@ -30,6 +30,6 @@ export type WalletObj = {
 export type WalletsCtxProps = {
     wallets: WalletListItem[]
     singleWallet:  WalletObj | null
-    setWallets: (wallets: WalletObj[]) => void
+    setWallets: (wallets: WalletListItem[]) => void
     setSingleWallet: (wallet: WalletObj | null) => void;
 }
