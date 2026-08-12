@@ -1,6 +1,6 @@
 const GeneralData = () => {
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between mb-7">
 			<div className="w-[48%]">
 				<label htmlFor="wallet-name">Name</label>
 				<input type="text" id="wallet-name" className="form-field" />
