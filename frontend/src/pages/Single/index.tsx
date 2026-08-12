@@ -21,7 +21,8 @@ const Single = () => {
 	}, []);
 
 	return (
-		<div className="pt-12">
+		<div>
+			<h1>Wallet</h1>
 			<General />
 			<Assets />
 			<Activities />

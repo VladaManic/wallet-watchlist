@@ -50,6 +50,7 @@ body {
 }
 
 h1 {
+    margin-bottom: 40px;
     font-family: 'Spartan Bold', 'sans-serif';
     font-size: 32px;
     line-height: 1.1;
@@ -77,4 +78,20 @@ button:hover {
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
+}
+
+.form-field {
+    padding-left: 15px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+
+    &:focus {
+        border-color: packmanUp;
+        outline: none;
+        box-shadow: none;
+    }
 }

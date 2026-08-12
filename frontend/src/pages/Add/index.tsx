@@ -1,6 +1,11 @@
+import AddForm from "../../components/Add/AddForm"
+
 const Add = () => {
 	return (
-		<div>Add</div>
+		<div>
+			<h1>Add new wallet</h1>
+			<AddForm />
+		</div>
 	)
 }
 

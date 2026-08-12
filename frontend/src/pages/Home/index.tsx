@@ -12,7 +12,8 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="pt-[50px]">
+		<div>
+			<h1>Wallets list</h1>
 			{walletsCtx.wallets.map((singleWallet: WalletListItem) => (
 				<WalletCard key={singleWallet.id} wallet={singleWallet} />
 			))}
