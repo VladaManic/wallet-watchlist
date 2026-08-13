@@ -11,7 +11,7 @@ const Activity = () => {
 
 	return (
 		<div>
-			<p className="mb-3">Activity:</p>
+			<p className="mb-3 font-spartan-bold">Activity:</p>
 			{singleWallet?.activity.map((singleActivity: ActivityObj) => (
 				<ActivityItem key={singleActivity.id} singleActivity={singleActivity} />
 			))}

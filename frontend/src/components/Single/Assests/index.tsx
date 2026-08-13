@@ -11,7 +11,7 @@ const Assets = () => {
 
 	return (
 		<div className="mb-3">
-			<p className="mb-3">Assets:</p>
+			<p className="mb-3 font-spartan-bold">Assets:</p>
 			{singleWallet?.assets.map((singleAsset: AssetsObj) => (
 				<AssetItem key={singleAsset.id} singleAsset={singleAsset} />
 			))}

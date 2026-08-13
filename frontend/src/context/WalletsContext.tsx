@@ -9,8 +9,8 @@ const WalletsContext = createContext<WalletsCtxProps>({
 	walletObjToAdd: {
 		name: '',
 		address: '',
-		assets: [],
-		activity: [],
+		assets: [{ symbol: '', balance: 0,}],
+		activity: [{ type: '', amount: '', date: ''}],
 	},
 	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
@@ -30,13 +30,13 @@ export const WalletsContextProvider = ({
 	const [currentWalletObjToAdd, setCurrentWalletObjToAdd] = useState<WalletObjToAdd>({
     name: '',
     address: '',
-    assets: [],
-    activity: [],
+    assets: [{ symbol: '', balance: 0,}],
+    activity: [{ type: '', amount: '', date: ''}],
 });
 
-	useEffect(() => {
-    console.log('Assets list changed:', currentWalletObjToAdd);
-	}, [currentWalletObjToAdd]);
+	// useEffect(() => {
+  //   console.log('Wallet changed:', currentWalletObjToAdd);
+	// }, [currentWalletObjToAdd]);
 
 	//Set all wallets
 	const setWalletsHandler = (wallets: WalletListItem[]) => {

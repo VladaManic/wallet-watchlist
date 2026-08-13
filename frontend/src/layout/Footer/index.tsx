@@ -10,7 +10,7 @@ const Footer = () => {
 			<NavLink to={`/`} end className="ml-[50px]">
 				<div className="flex items-center">
 					<img src={walletIcon} alt="Wallet icon" className="h-[60px]" />
-					<p className="font-spartan text-sm !text-body-bg">Wallet watchlist</p>
+					<p className="font-spartan-bold text-sm !text-body-bg">Wallet watchlist</p>
 				</div>
 			</NavLink>
 			<div className="flex flex-col">

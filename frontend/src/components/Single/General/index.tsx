@@ -12,10 +12,10 @@ const General = () => {
 
     return (
         <div>
-            <p className="mb-3">ID: {singleWallet.id}</p>
-						<p className="mb-3">Name: {singleWallet.name}</p>
-						<p className="mb-3">Address: {singleWallet.address}</p>
-            <p className="mb-3">Created at: {createdAt!.toLocaleDateString()}</p>
+            <p className="mb-3"><span className="font-spartan-bold">ID:</span> {singleWallet.id}</p>
+            <p className="mb-3"><span className="font-spartan-bold">Name:</span> {singleWallet.name}</p>
+            <p className="mb-3"><span className="font-spartan-bold">Address:</span> {singleWallet.address}</p>
+            <p className="mb-3"><span className="font-spartan-bold">Created at:</span> {createdAt!.toLocaleDateString()}</p>
         </div>
     );
 };

@@ -9,6 +9,7 @@ const Home = () => {
 	
 	useEffect(() => {
 			walletsCtx.setSingleWallet(null);
+			walletsCtx.setWalletObjToAdd({name: '', address: '', assets: [{ symbol: '', balance: 0,}], activity: [{ type: '', amount: '', date: ''}]})
 	}, []);
 
 	return (

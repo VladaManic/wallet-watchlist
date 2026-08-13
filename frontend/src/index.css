@@ -11,7 +11,7 @@
 }
 
 @theme {
-    --font-spartan: 'Spartan Bold', sans-serif;
+    --font-spartan-bold: 'Spartan Bold', sans-serif;
     --color-header-bg: #f2f5f3;
     --color-body-bg: #fff;
     --color-footer-bg: #403f3d;
@@ -19,6 +19,7 @@
     --color-border-orange: #cf580e;
     --color-single-card: #faf7f5;
     --color-black: #000;
+    --color-error: #e0224b;
 }
 
 a {
