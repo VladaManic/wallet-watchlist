@@ -19,7 +19,7 @@ const AddForm = () => {
 			<GeneralData />
 			<AssetsData />
 			<ActivityData />
-			<button onClick={onClickHandler}>Submit</button>
+			<button className="mb-10 uppercase" onClick={onClickHandler}>Submit</button>
 		</form>
 	)
 }

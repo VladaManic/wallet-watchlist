@@ -34,11 +34,17 @@ export type AssetsObjToAdd = {
     balance: number
 }
 
+export type ActivityObjToAdd = {
+    type: string
+    amount: string
+    date: string
+}
+
 export type WalletObjToAdd = {
     name?: string
     address?: string
     assets: AssetsObjToAdd[]
-    // activity: ActivityObj[]
+    activity: ActivityObjToAdd[]
 }
 
 
@@ -51,4 +57,6 @@ export type WalletsCtxProps = {
     setWalletObjToAdd: (data: Partial<WalletObjToAdd>) => void;
     createAssets: () => void
     updateAssets: (index: number, data: Partial<AssetsObjToAdd>) => void;
+    createActivity: () => void
+    updateActivity: (index: number, data: Partial<ActivityObjToAdd>) => void;
 }

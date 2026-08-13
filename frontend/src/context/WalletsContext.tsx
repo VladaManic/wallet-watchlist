@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 
-import type {WalletListItem, WalletObj, AssetsObjToAdd, WalletObjToAdd, WalletsCtxProps} from '../types/interfaces'
+import type {WalletListItem, WalletObj, AssetsObjToAdd, WalletObjToAdd, WalletsCtxProps, ActivityObjToAdd} from '../types/interfaces'
 
 const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
@@ -10,13 +10,15 @@ const WalletsContext = createContext<WalletsCtxProps>({
 		name: '',
 		address: '',
 		assets: [],
-		//activity: [],
+		activity: [],
 	},
 	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
 	setWalletObjToAdd: (wallet: Partial<WalletObjToAdd>) => {},
 	createAssets: () => {},
 	updateAssets: () => {},
+	createActivity: () => {},
+	updateActivity: () => {},
 });
 
 export const WalletsContextProvider = ({
@@ -28,7 +30,7 @@ export const WalletsContextProvider = ({
     name: '',
     address: '',
     assets: [],
-    //activity: [],
+    activity: [],
 });
 
 	useEffect(() => {
@@ -72,6 +74,25 @@ export const WalletsContextProvider = ({
 			}));
 	};
 
+	//Add empty object for activity
+	const createActivityHandler = () => {
+    setCurrentWalletObjToAdd(prev => ({
+        ...prev,
+        activity: [
+            ...prev.activity,
+            { type: '', amount: '', date: ''}
+        ],
+    }));
+	};
+
+	//Change valuse for symbol & balance in assets array
+	const updateActivityHandler = (index: number, data: Partial<ActivityObjToAdd>) => {
+			setCurrentWalletObjToAdd(prev => ({
+					...prev,
+					activity: prev.activity.map((activity, i) => i === index ? { ...activity, ...data } : activity),
+			}));
+	};
+
 	const context = {
 			wallets: currentWallets,
 			singleWallet: currentSingleWallet,
@@ -80,7 +101,9 @@ export const WalletsContextProvider = ({
 			setSingleWallet: setSingleWalletHandler,
 			setWalletObjToAdd: setWalletObjToAddHandler,
 			createAssets: createAssetsHandler,
-			updateAssets: updateAssetsHandler
+			updateAssets: updateAssetsHandler,
+			createActivity: createActivityHandler,
+			updateActivity: updateActivityHandler,
   }
 
 	return (

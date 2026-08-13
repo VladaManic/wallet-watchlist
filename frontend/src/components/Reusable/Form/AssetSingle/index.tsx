@@ -22,7 +22,7 @@ const AssetSingle = ({ index }: { index: number }) => {
 				<label htmlFor={`asset-symbol-${index}`}>Balance</label>
 				<input type="text" id={`asset-symbol-${index}`} className="form-field" onChange={(e) => setBalanceHandler(parseFloat(e.target.value))} />
 			</div>
-			<button>Delete</button>
+			<button className="mt-4">Delete</button>
 		</div>
 	)
 }
