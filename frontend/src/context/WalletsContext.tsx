@@ -34,9 +34,9 @@ export const WalletsContextProvider = ({
     activity: [{ type: '', amount: '', date: ''}],
 });
 
-	// useEffect(() => {
-  //   console.log('Wallet changed:', currentWalletObjToAdd);
-	// }, [currentWalletObjToAdd]);
+	useEffect(() => {
+    console.log('Wallet changed:', currentWallets);
+	}, [currentWallets]);
 
 	//Set all wallets
 	const setWalletsHandler = (wallets: WalletListItem[]) => {

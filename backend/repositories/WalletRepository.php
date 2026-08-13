@@ -103,11 +103,23 @@ class WalletRepository
             ':address' => $address
         ]);
 
-        return [
-            'id' => (int) $this->db->lastInsertId(),
-            'name' => $name,
-            'address' => $address
-        ];
+        $id = (int) $this->db->lastInsertId();
+
+        $stmt = $this->db->prepare("
+            SELECT
+                id,
+                name,
+                address,
+                created_at
+            FROM wallets
+            WHERE id = :id
+        ");
+
+        $stmt->execute([
+            ':id' => $id
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     //Insert into 'wallet_assets' table

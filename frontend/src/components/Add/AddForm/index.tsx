@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WalletsContext from "../../../context/WalletsContext";
 import { createWallet } from '../../../api/requests';
 import isPostObjectValid from '../../../utils/ifPostObjectValid'
@@ -9,6 +10,7 @@ import ActivityData from '../../Reusable/Form/ActivityData'
 
 
 const AddForm = () => {
+	const navigate = useNavigate();
 	const walletsCtx = useContext(WalletsContext);
 	const [showValidationMessage, setShowValidationMessage] = useState(false);
 
@@ -23,7 +25,18 @@ const AddForm = () => {
 					return;
 			}
 
-			await createWallet(walletsCtx.walletObjToAdd);
+			try {
+        const newWallet = await createWallet(walletsCtx.walletObjToAdd);
+        walletsCtx.setWallets([
+            newWallet,
+            ...walletsCtx.wallets
+        ]);
+
+        // redirect
+				navigate('/');
+			} catch (error) {
+					console.error('Request failed:', error);
+			}
 	};
 
 	return (
