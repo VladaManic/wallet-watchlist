@@ -10,15 +10,27 @@ $repository = new WalletRepository($pdo);
 $service = new WalletService($repository);
 $controller = new WalletController($service);
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$method = $_SERVER['REQUEST_METHOD'];
 
-if ($path === "/api/wallets") {
+//Get all wallets
+if ($path === "/api/wallets" && $method === "GET") {
     $controller->index();
     exit;
 }
 
+//Get single wallet
 if (preg_match('#^/api/wallets/(\d+)$#', $path, $matches)) {
     $id = (int) $matches[1];
-    $controller->show($id);
+    
+    if ($method === "GET") {
+        $controller->show($id);
+        exit;
+    }
+}
+
+//Add wallet
+if ($path === "/api/wallets" && $method === "POST") {
+    $controller->store();
     exit;
 }
 

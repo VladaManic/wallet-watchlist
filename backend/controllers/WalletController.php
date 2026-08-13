@@ -45,4 +45,16 @@ class WalletController
 
         echo json_encode($wallet);
     }
+
+    //Add single wallet
+    public function store()
+    {
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $wallet = $this->service->create($data);
+
+        http_response_code(201);
+
+        echo json_encode($wallet);
+    }
 }

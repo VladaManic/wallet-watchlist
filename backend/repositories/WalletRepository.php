@@ -87,4 +87,59 @@ class WalletRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //Insert into 'wallets' table
+    public function create(string $name, string $address)
+    {
+        $sql = "
+            INSERT INTO wallets (name, address)
+            VALUES (:name, :address)
+        ";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            ':name' => $name,
+            ':address' => $address
+        ]);
+
+        return [
+            'id' => (int) $this->db->lastInsertId(),
+            'name' => $name,
+            'address' => $address
+        ];
+    }
+
+    //Insert into 'wallet_assets' table
+    public function createAsset(int $walletId, string $symbol, float $balance): void {
+        $sql = "
+            INSERT INTO wallet_assets (wallet_id, symbol, balance)
+            VALUES (:wallet_id, :symbol, :balance)
+        ";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            ':wallet_id' => $walletId,
+            ':symbol' => $symbol,
+            ':balance' => $balance
+        ]);
+    }
+
+    //Insert into 'wallet_activity' table
+    public function createActivity(int $walletId, string $type, string $amount, string $date): void {
+        $sql = "
+            INSERT INTO wallet_activity (wallet_id, type, amount, date)
+            VALUES (:wallet_id, :type, :amount, :date)
+        ";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            ':wallet_id' => $walletId,
+            ':type' => $type,
+            ':amount' => $amount,
+            ':date' => $date
+        ]);
+    }
 }

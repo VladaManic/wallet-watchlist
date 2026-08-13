@@ -38,4 +38,33 @@ class WalletService
 
         return $wallet;
     }
+
+    public function create(array $data)
+    {
+        $wallet = $this->repository->create(
+            $data['name'],
+            $data['address']
+        );
+
+        $walletId = $wallet['id'];
+
+        foreach ($data['assets'] as $asset) {
+            $this->repository->createAsset(
+                $walletId,
+                $asset['symbol'],
+                (float) $asset['balance']
+            );
+        }
+
+        foreach ($data['activity'] as $activity) {
+            $this->repository->createActivity(
+                $walletId,
+                $activity['type'],
+                $activity['amount'],
+                $activity['date']
+            );
+        }
+
+        return $wallet;
+    }
 }

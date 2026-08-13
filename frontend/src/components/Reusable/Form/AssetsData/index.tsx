@@ -17,7 +17,7 @@ const AssetsData = () => {
 			{walletsCtx.walletObjToAdd.assets.map((asset, index) => (
 				<AssetSingle key={index} index={index} count={walletsCtx.walletObjToAdd.assets.length} />
 			))}
-			<button onClick={onClickHandler}>+ Add new asset</button>
+			<button onClick={onClickHandler}>+ Add new assets</button>
 		</div>
 	)
 }

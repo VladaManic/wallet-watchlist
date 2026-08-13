@@ -32,8 +32,8 @@ const AddForm = () => {
 			<AssetsData />
 			<ActivityData />
 			<div className="mb-10 text-center">
-				<button className="mb-4 uppercase" onClick={onClickHandler}>Submit</button>
-				{showValidationMessage && (<p className="text-xl text-error">All the fields have to be filled</p>)}
+				{showValidationMessage && (<p className="mb-4 text-xl text-error">All the fields have to be filled</p>)}
+				<button className="uppercase" onClick={onClickHandler}>Submit</button>
 			</div>
 		</form>
 	)
