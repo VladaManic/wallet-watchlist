@@ -27,11 +27,18 @@ export type WalletObj = {
     activity: ActivityObj[]
 }
 
+export type WalletObjToAdd = {
+    name?: string;
+    address?: string;
+}
+
 export type WalletsCtxProps = {
     wallets: WalletListItem[]
     singleWallet: WalletObj | null
     assetsList: number[]
+    walletObjToAdd: WalletObjToAdd
     setWallets: (wallets: WalletListItem[]) => void
-    setSingleWallet: (wallet: WalletObj | null) => void;
+    setSingleWallet: (wallet: WalletObj | null) => void
     setAssetsList: () => void
+    setWalletObjToAdd: (wallet: WalletObjToAdd) => void
 }

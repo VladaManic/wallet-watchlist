@@ -6,7 +6,8 @@ import AssetSingle from "../AssetSingle";
 const AssetsData = () => {
 	const walletsCtx = useContext(WalletsContext);
 
-	const onClickHandler = () => {
+	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
     walletsCtx.setAssetsList()
   }
 
