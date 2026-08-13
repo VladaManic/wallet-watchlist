@@ -1,7 +1,12 @@
 import { useContext } from "react"
 import WalletsContext from "../../../../context/WalletsContext"
 
-const AssetSingle = ({ index }: { index: number }) => {
+interface AssetSingleProps { 
+	index: number 
+	count: number
+}
+
+const AssetSingle = ({index, count}: AssetSingleProps) => {
 	const walletsCtx = useContext(WalletsContext);
 
 	const setSymbolHandler = (value: string) => {
@@ -12,17 +17,24 @@ const AssetSingle = ({ index }: { index: number }) => {
 		walletsCtx.updateAssets(index, {balance: value,})
 	}
 
+	const onDeleteHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		walletsCtx.deleteWalletItem('assets', index)
+	}
+
 	return (
 		<div className="flex justify-between items-center mb-7">
-			<div className="w-[40%]">
-				<label htmlFor={`asset-symbol-${index}`}>Symbol</label>
-				<input type="text" id={`asset-symbol-${index}`} className="form-field" onChange={(e) => setSymbolHandler(e.target.value)} />
+			<div className="flex justify-between items-center w-[85%]">
+				<div className="w-[48%]">
+					<label htmlFor={`asset-symbol-${index}`}>Symbol</label>
+					<input type="text" id={`asset-symbol-${index}`} className="form-field" onChange={(e) => setSymbolHandler(e.target.value)} />
+				</div>
+				<div className="w-[48%]">
+					<label htmlFor={`asset-balance-${index}`}>Balance</label>
+					<input type="text" id={`asset-balance-${index}`} className="form-field" onChange={(e) => setBalanceHandler(parseFloat(e.target.value))} />
+				</div>
 			</div>
-			<div className="w-[40%]">
-				<label htmlFor={`asset-symbol-${index}`}>Balance</label>
-				<input type="text" id={`asset-symbol-${index}`} className="form-field" onChange={(e) => setBalanceHandler(parseFloat(e.target.value))} />
-			</div>
-			<button className="mt-4">Delete</button>
+			{ count -1 == index && <button className="mt-4" onClick={onDeleteHandler}>Delete</button> }
 		</div>
 	)
 }

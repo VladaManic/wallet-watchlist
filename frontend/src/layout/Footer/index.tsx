@@ -8,7 +8,10 @@ const Footer = () => {
 	return (
 		<div className="flex justify-between items-center w-full h-[52px] pt-[60px] pb-[60px] bg-footer-bg text-color-body-bg">
 			<NavLink to={`/`} end className="ml-[50px]">
-				<img src={walletIcon} alt="Wallet icon" className="h-[60px]" />
+				<div className="flex items-center">
+					<img src={walletIcon} alt="Wallet icon" className="h-[60px]" />
+					<p className="font-spartan text-sm !text-body-bg">Wallet watchlist</p>
+				</div>
 			</NavLink>
 			<div className="flex flex-col">
 				<NavLink to={`/`} end className="mr-[20px] mb-[10px] ml-[20px] !text-body-bg">Home</NavLink>

@@ -19,6 +19,7 @@ const WalletsContext = createContext<WalletsCtxProps>({
 	updateAssets: () => {},
 	createActivity: () => {},
 	updateActivity: () => {},
+	deleteWalletItem: () => {},
 });
 
 export const WalletsContextProvider = ({
@@ -93,6 +94,17 @@ export const WalletsContextProvider = ({
 			}));
 	};
 
+	//Remove assets or activity row
+	const deleteWalletItemHandler = (
+    type: 'assets' | 'activity',
+    index: number
+	) => {
+			setCurrentWalletObjToAdd(prev => ({
+					...prev,
+					[type]: prev[type].filter((_, i) => i !== index),
+			}));
+	};
+
 	const context = {
 			wallets: currentWallets,
 			singleWallet: currentSingleWallet,
@@ -104,6 +116,7 @@ export const WalletsContextProvider = ({
 			updateAssets: updateAssetsHandler,
 			createActivity: createActivityHandler,
 			updateActivity: updateActivityHandler,
+			deleteWalletItem: deleteWalletItemHandler,
   }
 
 	return (
