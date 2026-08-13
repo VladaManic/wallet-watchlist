@@ -45,11 +45,9 @@ export type WalletObjToAdd = {
 export type WalletsCtxProps = {
     wallets: WalletListItem[]
     singleWallet: WalletObj | null
-    assetsList: number[]
     walletObjToAdd: WalletObjToAdd
     setWallets: (wallets: WalletListItem[]) => void
     setSingleWallet: (wallet: WalletObj | null) => void
-    setAssetsList: () => void
     setWalletObjToAdd: (data: Partial<WalletObjToAdd>) => void;
     createAssets: () => void
     updateAssets: (index: number, data: Partial<AssetsObjToAdd>) => void;

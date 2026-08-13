@@ -6,7 +6,6 @@ import type {WalletListItem, WalletObj, AssetsObjToAdd, WalletObjToAdd, WalletsC
 const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
 	singleWallet: null,
-	assetsList: [],
 	walletObjToAdd: {
 		name: '',
 		address: '',
@@ -15,7 +14,6 @@ const WalletsContext = createContext<WalletsCtxProps>({
 	},
 	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
-	setAssetsList: () => {},
 	setWalletObjToAdd: (wallet: Partial<WalletObjToAdd>) => {},
 	createAssets: () => {},
 	updateAssets: () => {},
@@ -26,7 +24,6 @@ export const WalletsContextProvider = ({
 }: PropsWithChildren<object>) => {
 	const [currentWallets, setCurrentWallets] = useState<WalletListItem[]>([])
 	const [currentSingleWallet, setCurrentSingleWallet] = useState<WalletObj | null>(null)
-	const [currentAssetsList, setCurrentAssetsList] = useState<number[]>([])
 	const [currentWalletObjToAdd, setCurrentWalletObjToAdd] = useState<WalletObjToAdd>({
     name: '',
     address: '',
@@ -47,10 +44,6 @@ export const WalletsContextProvider = ({
 	const setSingleWalletHandler = (wallet: WalletObj | null) => {
     setCurrentSingleWallet(wallet);
 	};
-
-	const setAssetsListHandler = () => {
-		setCurrentAssetsList([...currentAssetsList, currentAssetsList.length])
-	}
 
 	//Set wallet object that is going to be sent to backend to add
 	const setWalletObjToAddHandler = (data: Partial<WalletObjToAdd>) => {
@@ -82,11 +75,9 @@ export const WalletsContextProvider = ({
 	const context = {
 			wallets: currentWallets,
 			singleWallet: currentSingleWallet,
-			assetsList: currentAssetsList,
 			walletObjToAdd: currentWalletObjToAdd,
 			setWallets: setWalletsHandler,
 			setSingleWallet: setSingleWalletHandler,
-			setAssetsList: setAssetsListHandler,
 			setWalletObjToAdd: setWalletObjToAddHandler,
 			createAssets: createAssetsHandler,
 			updateAssets: updateAssetsHandler

@@ -1,19 +1,15 @@
-import { useContext } from "react";
-import WalletsContext from "../../../../context/WalletsContext";
+import { useContext } from "react"
+import WalletsContext from "../../../../context/WalletsContext"
 
-interface AssetSingleProps {
-    index: number;
-}
-
-const AssetSingle = ({index}: AssetSingleProps) => {
+const AssetSingle = ({ index }: { index: number }) => {
 	const walletsCtx = useContext(WalletsContext);
 
 	const setSymbolHandler = (value: string) => {
-		walletsCtx.updateAssets(index, {symbol: value,});
+		walletsCtx.updateAssets(index, {symbol: value,})
 	}
 
 	const setBalanceHandler = (value: number) => {
-		walletsCtx.updateAssets(index, {balance: value,});
+		walletsCtx.updateAssets(index, {balance: value,})
 	}
 
 	return (

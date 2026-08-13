@@ -8,15 +8,14 @@ const AssetsData = () => {
 
 	const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-    walletsCtx.setAssetsList()
 		walletsCtx.createAssets()
   }
 
 	return (
 		<div className="mb-[30px]">
 			<h2>Assets</h2>
-			{walletsCtx.assetsList.map((item: number) => (
-				<AssetSingle key={item} index={item} />
+			{walletsCtx.walletObjToAdd.assets.map((asset, index) => (
+				<AssetSingle key={index} index={index} />
 			))}
 			<button onClick={onClickHandler}>+ Add new asset</button>
 		</div>
