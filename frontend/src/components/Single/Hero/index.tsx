@@ -1,8 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { deleteWallet } from '../../../api/requests';
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import WalletsContext from "../../../context/WalletsContext"
+import { deleteWallet } from '../../../api/requests'
 
 const Hero = ({ id }: { id: number }) => {
-	const navigate = useNavigate();
+	const navigate = useNavigate()
+	const walletsCtx = useContext(WalletsContext)
 
 	const onUpdateHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
 
@@ -10,11 +13,18 @@ const Hero = ({ id }: { id: number }) => {
 
 	const onDeleteHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		try {
+			
 			await deleteWallet(id);
-			// redirect
+			//remove from context
+			walletsCtx.setWallets(
+					walletsCtx.wallets.filter(
+							(wallet) => Number(wallet.id) !== id
+					)
+			);
+			//redirect
 			navigate('/');
 		} catch (error) {
-				console.error('Request failed:', error);
+				console.error('Request failed:', error)
 		}
 	}
 
