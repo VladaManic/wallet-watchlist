@@ -45,7 +45,7 @@ const Hero = ({ id }: { id: number }) => {
 			</div>
 			{modalVisible && (
 					<ModalDefaultWrap onClose={onCloseHandler}>
-						<Modal/>
+						<Modal onClickClose={onCloseHandler} />
 					</ModalDefaultWrap>
 			)}
 		</div>
