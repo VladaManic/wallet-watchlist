@@ -31,7 +31,6 @@ const AddForm = () => {
             newWallet,
             ...walletsCtx.wallets
         ]);
-
         // redirect
 				navigate('/');
 			} catch (error) {
@@ -45,7 +44,7 @@ const AddForm = () => {
 			<AssetsData />
 			<ActivityData />
 			<div className="mb-10 text-center">
-				{showValidationMessage && (<p className="mb-4 text-xl text-error">All the fields have to be filled</p>)}
+				<p className={`mb-4 text-xl text-error transition-opacity duration-500 ${showValidationMessage ? 'opacity-100' : 'opacity-0'}`}>All the fields have to be filled with right data type</p>
 				<button className="uppercase" onClick={onClickHandler}>Submit</button>
 			</div>
 		</form>

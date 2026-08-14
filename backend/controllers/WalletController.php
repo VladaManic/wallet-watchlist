@@ -57,4 +57,24 @@ class WalletController
 
         echo json_encode($wallet);
     }
+
+    //Delete wallet
+    public function delete(int $id): void
+    {
+        $deleted = $this->service->deleteWallet($id);
+
+        if (!$deleted) {
+            http_response_code(404);
+
+            echo json_encode([
+                "message" => "Wallet not found"
+            ]);
+
+            return;
+        }
+
+        echo json_encode([
+            "message" => "Wallet deleted successfully"
+        ]);
+    }
 }

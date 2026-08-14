@@ -34,6 +34,16 @@ if ($path === "/api/wallets" && $method === "POST") {
     exit;
 }
 
+//Delete wallet
+if (preg_match('#^/api/wallets/(\d+)$#', $path, $matches)) {
+    $id = (int) $matches[1];
+    
+    if ($method === "DELETE") {
+        $controller->delete($id);
+        exit;
+    }
+}
+
 http_response_code(404);
 
 echo json_encode([

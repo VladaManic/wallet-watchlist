@@ -154,4 +154,19 @@ class WalletRepository
             ':date' => $date
         ]);
     }
+
+    //Delete wallet
+    public function deleteWallet(int $id): bool
+    {
+        $stmt = $this->db->prepare(
+            "DELETE FROM wallets
+            WHERE id = :id"
+        );
+
+        $stmt->execute([
+            'id' => $id
+        ]);
+
+        return $stmt->rowCount() > 0;
+    }
 }

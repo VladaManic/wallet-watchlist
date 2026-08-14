@@ -67,4 +67,9 @@ class WalletService
 
         return $wallet;
     }
+
+    public function deleteWallet(int $id): bool
+    {
+        return $this->repository->deleteWallet($id);
+    }
 }

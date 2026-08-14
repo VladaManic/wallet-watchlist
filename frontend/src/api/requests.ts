@@ -30,3 +30,13 @@ export const createWallet = async (wallet: WalletObjToAdd) => {
         throw error;
     }
 };
+
+export const deleteWallet = async (id: number) => {
+    try {
+        const response = await api.delete(`/api/wallets/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to delete wallet:', error);
+        throw error;
+    }
+};
