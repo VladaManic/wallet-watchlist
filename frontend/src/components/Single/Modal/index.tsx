@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import WalletsContext from "../../../context/WalletsContext";
-import { editWallet } from '../../../api/requests';
+import { editWallet, getSingleWallet } from '../../../api/requests';
 
 import GeneralData from '../../Reusable/Form/GeneralData'
 import AssetsData from '../../Reusable/Form/AssetsData'
@@ -11,11 +10,11 @@ import isPostObjectValid from '../../../utils/ifPostObjectValid'
 import removeIcon from '../../../assets/img/remove-icon.svg'
 
 interface Props {
-    onClickClose: React.MouseEventHandler<HTMLImageElement>
+	id: number
+  onClickClose: () => void
 }
 
-const Modal = ({ onClickClose }: Props) => {
-	const navigate = useNavigate();
+const Modal = ({ id, onClickClose }: Props) => {
 	const walletsCtx = useContext(WalletsContext);
 	const [showValidationMessage, setShowValidationMessage] = useState(false);
 
@@ -31,13 +30,12 @@ const Modal = ({ onClickClose }: Props) => {
 			}
 
 			try {
-        const newWallet = await editWallet(walletsCtx.walletObjToAdd);
-        walletsCtx.setWallets([
-            newWallet,
-            ...walletsCtx.wallets
-        ]);
-        // redirect
-				navigate('/');
+       	await editWallet(walletsCtx.walletObjToAdd);
+				//Set edited wallet in context, so display of data on page could update
+				const data = await getSingleWallet(id);
+				walletsCtx.setSingleWallet(data);
+				//Close modal
+				onClickClose();
 			} catch (error) {
 					console.error('Request failed:', error);
 			}

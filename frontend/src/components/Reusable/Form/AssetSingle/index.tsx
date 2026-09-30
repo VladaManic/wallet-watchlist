@@ -30,11 +30,11 @@ const AssetSingle = ({index, asset, count}: AssetSingleProps) => {
 			<div className="flex justify-between items-center w-[85%]">
 				<div className="w-[48%]">
 					<label htmlFor={`asset-symbol-${index}`}>Symbol</label>
-					<input type="text" id={`asset-symbol-${index}`} className="form-field" value={walletsCtx.walletObjToAdd.type === false ? asset.symbol : ''} onChange={(e) => setSymbolHandler(e.target.value)} />
+					<input type="text" id={`asset-symbol-${index}`} className="form-field" defaultValue={walletsCtx.walletObjToAdd.type === false ? asset.symbol : ''} onChange={(e) => setSymbolHandler(e.target.value)} />
 				</div>
 				<div className="w-[48%]">
 					<label htmlFor={`asset-balance-${index}`}>Balance</label>
-					<input type="text" id={`asset-balance-${index}`} className="form-field" value={walletsCtx.walletObjToAdd.type === false ? asset.balance : ''} onChange={(e) => setBalanceHandler(parseFloat(e.target.value))} />
+					<input type="text" id={`asset-balance-${index}`} className="form-field" defaultValue={walletsCtx.walletObjToAdd.type === false ? asset.balance : ''} onChange={(e) => setBalanceHandler(parseFloat(e.target.value))} />
 				</div>
 			</div>
 			{ count -1 == index && <button className="mt-4" onClick={onDeleteHandler}>Delete</button> }

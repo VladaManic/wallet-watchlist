@@ -16,11 +16,11 @@ const GeneralData = () => {
 		<div className="flex justify-between mb-7">
 			<div className="w-[48%]">
 				<label htmlFor="wallet-name">Name</label>
-				<input type="text" id="wallet-name" className="form-field" value={walletsCtx.walletObjToAdd.type === false ? walletsCtx.walletObjToAdd.name : ''} onChange={(e) => setNameHandler(e.target.value)} />
+				<input type="text" id="wallet-name" className="form-field" defaultValue={walletsCtx.walletObjToAdd.type === false ? walletsCtx.walletObjToAdd.name : ''} onChange={(e) => setNameHandler(e.target.value)} />
 			</div>
 			<div className="w-[48%]">
 				<label htmlFor="wallet-address">Address</label>
-				<input type="text" id="wallet-address" className="form-field" value={walletsCtx.walletObjToAdd.type === false ? walletsCtx.walletObjToAdd.address : ''} readOnly={walletsCtx.walletObjToAdd.type === false} onChange={(e) => setAddressHandler(e.target.value)} />
+				<input type="text" id="wallet-address" className="form-field" defaultValue={walletsCtx.walletObjToAdd.type === false ? walletsCtx.walletObjToAdd.address : ''} readOnly={walletsCtx.walletObjToAdd.type === false} onChange={(e) => setAddressHandler(e.target.value)} />
 			</div>
 		</div>
 	)
