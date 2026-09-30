@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import WalletsContext from "../../../../context/WalletsContext"
 
-import type { ActivityObjToAdd } from "../../../../types/interfaces"
+import type { ActivityObj } from "../../../../types/interfaces"
 
 interface ActivitySingleProps {
-	activity: ActivityObjToAdd
+	activity: ActivityObj
 	index: number 
 	count: number
 }

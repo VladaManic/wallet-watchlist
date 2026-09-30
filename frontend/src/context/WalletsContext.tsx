@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
 import { createDefaultWalletObjToAdd } from './defaults'
 
-import type {WalletListItem, WalletObj, AssetsObjToAdd, WalletObjToAdd, WalletsCtxProps, ActivityObjToAdd} from '../types/interfaces'
+import type {WalletListItem, WalletObj, AssetsObj, WalletObjToAdd, WalletsCtxProps, ActivityObj} from '../types/interfaces'
 
 const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
@@ -59,7 +59,7 @@ export const WalletsContextProvider = ({
 	};
 
 	//Change values for symbol & balance in assets array
-	const updateAssetsHandler = (index: number, data: Partial<AssetsObjToAdd>) => {
+	const updateAssetsHandler = (index: number, data: Partial<AssetsObj>) => {
 			setCurrentWalletObjToAdd(prev => ({
 					...prev,
 					assets: prev.assets.map((asset, i) => i === index ? { ...asset, ...data } : asset),
@@ -78,7 +78,7 @@ export const WalletsContextProvider = ({
 	};
 
 	//Change values for type & amount in activity array
-	const updateActivityHandler = (index: number, data: Partial<ActivityObjToAdd>) => {
+	const updateActivityHandler = (index: number, data: Partial<ActivityObj>) => {
 			setCurrentWalletObjToAdd(prev => ({
 					...prev,
 					activity: prev.activity.map((activity, i) => i === index ? { ...activity, ...data } : activity),

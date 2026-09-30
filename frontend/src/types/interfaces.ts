@@ -29,25 +29,12 @@ export type WalletObj = {
 }
 
 
-export type AssetsObjToAdd = {
-    id: number
-    symbol: string
-    balance: number | string
-}
-
-export type ActivityObjToAdd = {
-    id: number
-    type: string
-    amount: string
-    date: string
-}
-
 export type WalletObjToAdd = {
     id: number
     name?: string
     address?: string
-    assets: AssetsObjToAdd[]
-    activity: ActivityObjToAdd[]
+    assets: AssetsObj[]
+    activity: ActivityObj[]
     type: boolean
 }
 
@@ -60,8 +47,8 @@ export type WalletsCtxProps = {
     setSingleWallet: (wallet: WalletObj | null) => void
     setWalletObjToAdd: (data: Partial<WalletObjToAdd>) => void
     createAssets: () => void
-    updateAssets: (index: number, data: Partial<AssetsObjToAdd>) => void
+    updateAssets: (index: number, data: Partial<AssetsObj>) => void
     createActivity: () => void
-    updateActivity: (index: number, data: Partial<ActivityObjToAdd>) => void
+    updateActivity: (index: number, data: Partial<ActivityObj>) => void
     deleteWalletItem: (type: 'assets' | 'activity', index: number) => void
 }

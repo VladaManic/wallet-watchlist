@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import WalletsContext from "../../../../context/WalletsContext"
 
-import type { AssetsObjToAdd } from "../../../../types/interfaces"
+import type { AssetsObj } from "../../../../types/interfaces"
 
 interface AssetSingleProps {
-	asset: AssetsObjToAdd
+	asset: AssetsObj
 	index: number 
 	count: number
 }
