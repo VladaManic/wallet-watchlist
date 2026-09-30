@@ -68,6 +68,33 @@ class WalletService
         return $wallet;
     }
 
+    public function update(array $data)
+    {
+        $wallet = $this->repository->updateWallet(
+            $data['id'],
+            $data['name']
+        );
+
+        foreach ($data['assets'] as $asset) {
+            $this->repository->updateAsset(
+                $asset['id'],
+                $asset['symbol'],
+                $asset['balance']
+            );
+        }
+
+        foreach ($data['activity'] as $activity) {
+            $this->repository->updateActivity(
+                $activity['id'],
+                $activity['type'],
+                $activity['amount'],
+                $activity['date']
+            );
+        }
+
+        return $this->repository->findById($data['id']);
+    }
+
     public function deleteWallet(int $id): bool
     {
         return $this->repository->deleteWallet($id);

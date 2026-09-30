@@ -31,6 +31,16 @@ export const createWallet = async (wallet: WalletObjToAdd) => {
     }
 };
 
+export const editWallet = async (wallet: WalletObjToAdd) => {
+    try {
+        const response = await api.put(`/api/wallets/${wallet.id}`, wallet);
+        return response.data;
+    } catch (error) {
+        console.error('Failed to add new wallet:', error);
+        throw error;
+    }
+};
+
 export const deleteWallet = async (id: number) => {
     try {
         const response = await api.delete(`/api/wallets/${id}`);

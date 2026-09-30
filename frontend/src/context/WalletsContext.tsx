@@ -7,10 +7,12 @@ const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
 	singleWallet: null,
 	walletObjToAdd: {
+		id: 0,
 		name: '',
 		address: '',
-		assets: [{ symbol: '', balance: 0,}],
-		activity: [{ type: '', amount: '', date: ''}],
+		assets: [{ id: 0, symbol: '', balance: 0,}],
+		activity: [{ id: 0, type: '', amount: '', date: ''}],
+		type: true
 	},
 	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
@@ -28,15 +30,17 @@ export const WalletsContextProvider = ({
 	const [currentWallets, setCurrentWallets] = useState<WalletListItem[]>([])
 	const [currentSingleWallet, setCurrentSingleWallet] = useState<WalletObj | null>(null)
 	const [currentWalletObjToAdd, setCurrentWalletObjToAdd] = useState<WalletObjToAdd>({
+		id: 0,
     name: '',
     address: '',
-    assets: [{ symbol: '', balance: 0,}],
-    activity: [{ type: '', amount: '', date: ''}],
-});
+    assets: [{ id: 0, symbol: '', balance: 0,}],
+    activity: [{ id: 0, type: '', amount: '', date: ''}],
+		type: true
+	});
 
 	// useEffect(() => {
-  //   console.log('Wallet changed:', currentWallets);
-	// }, [currentWallets]);
+  //   console.log('Wallet changed:', currentWalletObjToAdd);
+	// }, [currentWallets, currentSingleWallet]);
 
 	//Set all wallets
 	const setWalletsHandler = (wallets: WalletListItem[]) => {
@@ -62,12 +66,12 @@ export const WalletsContextProvider = ({
         ...prev,
         assets: [
             ...prev.assets,
-            { symbol: '', balance: 0,}
+            { id: 0, symbol: '', balance: 0,}
         ],
     }));
 	};
 
-	//Change valuse for symbol & balance in assets array
+	//Change values for symbol & balance in assets array
 	const updateAssetsHandler = (index: number, data: Partial<AssetsObjToAdd>) => {
 			setCurrentWalletObjToAdd(prev => ({
 					...prev,
@@ -81,12 +85,12 @@ export const WalletsContextProvider = ({
         ...prev,
         activity: [
             ...prev.activity,
-            { type: '', amount: '', date: ''}
+            { id: 0, type: '', amount: '', date: ''}
         ],
     }));
 	};
 
-	//Change valuse for symbol & balance in assets array
+	//Change values for type & amount in activity array
 	const updateActivityHandler = (index: number, data: Partial<ActivityObjToAdd>) => {
 			setCurrentWalletObjToAdd(prev => ({
 					...prev,

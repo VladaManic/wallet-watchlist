@@ -58,6 +58,18 @@ class WalletController
         echo json_encode($wallet);
     }
 
+    //Edit single wallet
+    public function update()
+    {
+        $data = json_decode(file_get_contents("php://input"), true);
+
+        $wallet = $this->service->update($data);
+
+        http_response_code(201);
+
+        echo json_encode($wallet);
+    }
+
     //Delete wallet
     public function delete(int $id): void
     {

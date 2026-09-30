@@ -155,6 +155,58 @@ class WalletRepository
         ]);
     }
 
+    //Update 'wallets' table
+    public function updateWallet(int $id, string $name)
+    {
+        $stmt = $this->db->prepare("
+            UPDATE wallets
+            SET name = :name
+            WHERE id = :id
+        ");
+
+        $stmt->execute([
+            ':name' => $name,
+            ':id' => $id
+        ]);
+    }
+
+    //Update 'wallet_assets' table
+    public function updateAsset(int $id, string $symbol, float $balance)
+    {
+        $stmt = $this->db->prepare("
+            UPDATE wallet_assets
+            SET symbol = :symbol, balance = :balance
+            WHERE id = :id
+        ");
+
+        $stmt->execute([
+            ':symbol' => $symbol,
+            ':balance' => $balance,
+            ':id' => $id
+        ]);
+    }
+
+    //Update 'wallet_activity' table
+    public function updateActivity(
+    int $id,
+    string $type,
+    string $amount,
+    string $date
+    ) {
+        $stmt = $this->db->prepare("
+            UPDATE wallet_activity
+            SET type = :type, amount = :amount, date = :date
+            WHERE id = :id
+        ");
+
+        $stmt->execute([
+            ':type' => $type,
+            ':amount' => $amount,
+            ':date' => $date,
+            ':id' => $id
+        ]);
+    }
+
     //Delete wallet
     public function deleteWallet(int $id): bool
     {

@@ -34,6 +34,12 @@ if ($path === "/api/wallets" && $method === "POST") {
     exit;
 }
 
+//Edit wallet
+if (preg_match('#^/api/wallets/(\d+)$#', $path, $matches) && $method === "PUT") {
+    $controller->update((int) $matches[1]);
+    exit;
+}
+
 //Delete wallet
 if (preg_match('#^/api/wallets/(\d+)$#', $path, $matches)) {
     $id = (int) $matches[1];

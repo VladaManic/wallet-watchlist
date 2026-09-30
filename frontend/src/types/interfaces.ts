@@ -30,21 +30,25 @@ export type WalletObj = {
 
 
 export type AssetsObjToAdd = {
+    id: number
     symbol: string
     balance: number
 }
 
 export type ActivityObjToAdd = {
+    id: number
     type: string
     amount: string
     date: string
 }
 
 export type WalletObjToAdd = {
+    id: number
     name?: string
     address?: string
     assets: AssetsObjToAdd[]
     activity: ActivityObjToAdd[]
+    type: boolean
 }
 
 
