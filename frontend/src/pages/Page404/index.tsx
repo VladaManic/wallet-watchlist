@@ -1,12 +1,13 @@
 import { useContext, useEffect } from 'react'
 import WalletsContext from '../../context/WalletsContext'
+import { createDefaultWalletObjToAdd } from '../../context/defaults'
 
 const Page404 = () => {
 	const walletsCtx = useContext(WalletsContext)
 
 	useEffect(() => {
 			walletsCtx.setSingleWallet(null);
-			walletsCtx.setWalletObjToAdd({id: 0, name: '', address: '', assets: [{ id: 0, symbol: '', balance: 0,}], activity: [{ id: 0, type: '', amount: '', date: ''}], type: true})
+			walletsCtx.setWalletObjToAdd(createDefaultWalletObjToAdd())
 	}, []);
 
 	return (

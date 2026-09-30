@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react'
 import WalletsContext from '../../context/WalletsContext'
+import { createDefaultWalletObjToAdd } from '../../context/defaults'
 import type { WalletListItem } from '../../types/interfaces'
 
 import WalletCard from '../../components/Home/WalletCard'
@@ -9,7 +10,7 @@ const Home = () => {
 	
 	useEffect(() => {
 			walletsCtx.setSingleWallet(null);
-			walletsCtx.setWalletObjToAdd({id: 0, name: '', address: '', assets: [{ id: 0, symbol: '', balance: 0,}], activity: [{ id: 0, type: '', amount: '', date: ''}], type: true})
+			walletsCtx.setWalletObjToAdd(createDefaultWalletObjToAdd())
 	}, []);
 
 	return (

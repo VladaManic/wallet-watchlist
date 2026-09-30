@@ -1,19 +1,13 @@
 import { createContext, useEffect, useState } from 'react';
 import type { PropsWithChildren } from 'react';
+import { createDefaultWalletObjToAdd } from './defaults'
 
 import type {WalletListItem, WalletObj, AssetsObjToAdd, WalletObjToAdd, WalletsCtxProps, ActivityObjToAdd} from '../types/interfaces'
 
 const WalletsContext = createContext<WalletsCtxProps>({
 	wallets: [],
 	singleWallet: null,
-	walletObjToAdd: {
-		id: 0,
-		name: '',
-		address: '',
-		assets: [{ id: 0, symbol: '', balance: 0,}],
-		activity: [{ id: 0, type: '', amount: '', date: ''}],
-		type: true
-	},
+	walletObjToAdd: createDefaultWalletObjToAdd(),
 	setWallets: (wallets: WalletListItem[]) => {null},
 	setSingleWallet: (wallet: WalletObj | null) => {},
 	setWalletObjToAdd: (wallet: Partial<WalletObjToAdd>) => {},
@@ -29,18 +23,11 @@ export const WalletsContextProvider = ({
 }: PropsWithChildren<object>) => {
 	const [currentWallets, setCurrentWallets] = useState<WalletListItem[]>([])
 	const [currentSingleWallet, setCurrentSingleWallet] = useState<WalletObj | null>(null)
-	const [currentWalletObjToAdd, setCurrentWalletObjToAdd] = useState<WalletObjToAdd>({
-		id: 0,
-    name: '',
-    address: '',
-    assets: [{ id: 0, symbol: '', balance: 0,}],
-    activity: [{ id: 0, type: '', amount: '', date: ''}],
-		type: true
-	});
+	const [currentWalletObjToAdd, setCurrentWalletObjToAdd] = useState<WalletObjToAdd>(createDefaultWalletObjToAdd());
 
 	// useEffect(() => {
   //   console.log('Wallet changed:', currentWalletObjToAdd);
-	// }, [currentWallets, currentSingleWallet]);
+	// }, [currentWalletObjToAdd]);
 
 	//Set all wallets
 	const setWalletsHandler = (wallets: WalletListItem[]) => {

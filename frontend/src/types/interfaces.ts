@@ -9,7 +9,7 @@ export type WalletListItem = {
 export type AssetsObj = {
     id: number
     symbol: string
-    balance: number
+    balance: number | string
 }
 
 export type ActivityObj = {
@@ -32,7 +32,7 @@ export type WalletObj = {
 export type AssetsObjToAdd = {
     id: number
     symbol: string
-    balance: number
+    balance: number | string
 }
 
 export type ActivityObjToAdd = {
